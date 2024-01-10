@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
         octLoop_start = rospy.get_time()
         rospy.on_shutdown(GaBP_k.on_shutdown)
-	occ_itr = 0
+        occ_itr = 0
         sim_start = rospy.get_time()
 
         while not rospy.is_shutdown():
@@ -146,7 +146,7 @@ if __name__ == '__main__':
                 #  rospy.loginfo('variance map saved to: ' + output_path + 'GaBP_var_matrix'+ str(occ_itr) +'.npy')
                 #  np.save(output_path + 'GaBP_meta_data'+ str(occ_itr) +'.npy', np.array([GaBP_k.origin, GaBP_k.gridsize, GaBP_k.N, len(GaBP_k.z_pos),GaBP_k.msgs_wild, GaBP_k.msgs_resid, rospy.get_time() - sim_start]))
                 #  rospy.loginfo('meta data saved to: ' + output_path + 'GaBP_meta_data'+ str(occ_itr) +'.npy')
-		occ_itr += 1
+                occ_itr += 1
                 rospy.loginfo("+++++ UPDATING OCTOMAP +++++")
                 tic = rospy.get_rostime()
                 os.system('rosrun octomap_server octomap_saver GaBP_oct.bt')

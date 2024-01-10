@@ -110,8 +110,8 @@ if __name__ == '__main__':
         resid_loop.start()
 
         mapLoop_start = rospy.get_time()
-	rospy.on_shutdown(GaBP_k.on_shutdown)
-	occ_itr = 0
+        rospy.on_shutdown(GaBP_k.on_shutdown)
+        occ_itr = 0
         sim_start = rospy.get_time()
 
         while not rospy.is_shutdown():
@@ -137,13 +137,13 @@ if __name__ == '__main__':
 
             if rospy.get_time() - mapLoop_start > 1 / occ_update_freq:
                 ## Uncomment if you need to save conc/var maps to file
-		#  np.save(output_path + 'GaBP_mean_matrix'+ str(occ_itr) +'.npy', GaBP_k.mean)
+                #  np.save(output_path + 'GaBP_mean_matrix'+ str(occ_itr) +'.npy', GaBP_k.mean)
                 #  rospy.loginfo('mean map saved to: ' + output_path + 'GaBP_mean_matrix'+ str(occ_itr) +'.npy')
                 #  np.save(output_path + 'GaBP_var_matrix'+ str(occ_itr) +'.npy', GaBP_k.var)
                 #  rospy.loginfo('variance map saved to: ' + output_path + 'GaBP_var_matrix'+ str(occ_itr) +'.npy')
                 #  np.save(output_path + 'GaBP_meta_data'+ str(occ_itr) +'.npy', np.array([GaBP_k.origin, GaBP_k.gridsize, GaBP_k.N, len(GaBP_k.z_pos),GaBP_k.msgs_wild, GaBP_k.msgs_resid, rospy.get_time() - sim_start]))
                 #  rospy.loginfo('meta data saved to: ' + output_path + 'GaBP_meta_data'+ str(occ_itr) +'.npy')
-		occ_itr += 1
+                occ_itr += 1
                 rospy.loginfo("+++++ UPDATING OCCUPANCY MAP +++++")
                 tic = rospy.get_rostime()
                 occ = maps.OccGenerator()
@@ -151,7 +151,7 @@ if __name__ == '__main__':
                 occ.ros2occ(occ_msg, resolution)
                 toc = rospy.get_rostime()
                 rospy.loginfo("[Occupancy grid]: converted in %.3fs", toc.secs - tic.secs + 1e-9 * (toc.nsecs - tic.nsecs))
-		tic = rospy.get_rostime()
+                tic = rospy.get_rostime()
                 GaBP_k.update_occ(occ)
                 toc = rospy.get_rostime()
                 rospy.loginfo("+++++ FACTOR GRAPH UPDATED in %.3fs +++++", toc.secs - tic.secs + 1e-9 * (toc.nsecs - tic.nsecs))

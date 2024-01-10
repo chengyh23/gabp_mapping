@@ -26,10 +26,10 @@ class Integrator:
 
         self.data_store = [0]
         self.time_store = [rospy.get_time()]
-	if topic_type == 'Float32':
-		rospy.Subscriber(sensor_topic, Float32, self.callback)
-	else:
-        	rospy.Subscriber(sensor_topic, Int32, self.callback)
+        if topic_type == 'Float32':
+                rospy.Subscriber(sensor_topic, Float32, self.callback)
+        else:
+                rospy.Subscriber(sensor_topic, Int32, self.callback)
 
     def callback(self, data):
         self.data_store.append(data.data)

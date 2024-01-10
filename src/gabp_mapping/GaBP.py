@@ -482,7 +482,7 @@ class G_GaBP_2D:
                     point_msg.y = y * self.gridsize + self.origin[1]
                     point_msg.z = 0
                     point_colour = ColorRGBA()
-        	    rgb = self.cmap(alpha)
+                    rgb = self.cmap(alpha)
                     point_colour.r = rgb[0]
                     point_colour.g = rgb[1]
                     point_colour.b = rgb[2]
